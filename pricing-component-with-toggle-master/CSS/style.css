@@ -1,0 +1,204 @@
+@import url(components.css);
+
+.bg-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.bg-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.app-wrapper {
+  width: 1200px;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.main-title {
+  color: var(--grayish-blue);
+}
+
+.pricing-options {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pricing-text {
+  color: var(--light-grayish-blue);
+}
+
+#pricing-btn {
+  --width: 60px;
+  --height: 30px;
+  --padding: 5px;
+  width: var(--width);
+  height: var(--height);
+  padding: var(--padding);
+  border: none;
+  border-radius: 50px;
+  background-image: var(--linear-gradient);
+  cursor: pointer;
+}
+#pricing-btn:hover {
+  background-image: none;
+  background-color: var(--light-grayish-blue);
+}
+
+#btn-indicator {
+  --size: calc(var(--height) - (2 * var(--padding)));
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: var(--very-light-grayish-blue);
+  transform: translateX(30px);
+  transition: transform 300ms ease-in;
+}
+
+/* Pricing Container */
+.pricing-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.pricing-component {
+  --width-comp-even: 32.5%;
+  --width-comp-odd: calc(100% - 2 * var(--width-comp-even));
+  --padding-inline-comp: 2.5%;
+  --padding-block-comp-odd: 25px;
+  --padding-block-comp-even: calc(var(--padding-block-comp-odd) * 1.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pricing-component:nth-of-type(odd) {
+  width: var(--width-comp-odd);
+  min-width: var(--width-comp-odd);
+  max-width: var(--width-comp-odd);
+  padding: var(--padding-block-comp-odd) var(--padding-inline-comp);
+  background-color: var(--very-light-grayish-blue);
+  color: var(--dark-grayish-blue);
+}
+.pricing-component:nth-of-type(even) {
+  width: var(--width-comp-even);
+  min-width: var(--width-comp-even);
+  max-width: var(--width-comp-even);
+  padding: var(--padding-block-comp-even) var(--padding-inline-comp);
+  background-image: var(--linear-gradient);
+  color: var(--very-light-grayish-blue);
+}
+.pricing-component:nth-of-type(1) {
+  border-radius: 8px 0 0 8px;
+}
+.pricing-component:nth-of-type(2) {
+  border-radius: 8px;
+}
+.pricing-component:nth-of-type(3) {
+  border-radius: 0 8px 8px 0;
+}
+
+.component-price {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.benefits-list {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefit {
+  text-align: center;
+  width: 100%;
+  padding-block: 15px;
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+.benefits-list .benefit:last-of-type {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+.pricing-component:nth-of-type(odd) .benefit {
+  border-color: var(--light-grayish-blue);
+}
+
+.cta-btn {
+  width: 100%;
+  padding-block: 12px;
+  font-size: var(--fsS);
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.pricing-component:nth-of-type(odd) .cta-btn {
+  color: var(--very-light-grayish-blue);
+  background-image: var(--linear-gradient);
+}
+.pricing-component:nth-of-type(odd) .cta-btn:hover {
+  color: var(--dark-grayish-blue);
+  background-image: none;
+  background-color: var(--very-light-grayish-blue);
+  border: 2px solid var(--dark-grayish-blue);
+}
+.pricing-component:nth-of-type(even) .cta-btn {
+  color: var(--grayish-blue);
+  background-color: var(--very-light-grayish-blue);
+  border: 2px solid var(--very-light-grayish-blue);
+}
+.pricing-component:nth-of-type(even) .cta-btn:hover {
+  color: var(--very-light-grayish-blue);
+  background-color: transparent;
+}
+
+@media (max-width: 1320px) {
+  .app-wrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 830px) {
+  .pricing-container {
+    width: 100%;
+    display: grid !important;
+
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .pricing-component {
+    --width-comp-even: 100%;
+    --width-comp-odd: 100%;
+    border-radius: 8px;
+  }
+  .bg-top,
+  .bg-bottom {
+    display: none;
+  }
+}
